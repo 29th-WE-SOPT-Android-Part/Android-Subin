@@ -196,3 +196,89 @@
         
          </div>
      </details>
+ 
+  * ## RepositoryRecyclerView
+    ```kotlin
+           <androidx.recyclerview.widget.RecyclerView
+                  android:id="@+id/rv_repository"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_marginStart="10dp"
+                  android:layout_marginEnd="10dp"
+                  app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:spanCount="2"
+                  tools:itemCount="4"
+                  tools:listitem="@layout/item_repository" />
+    ```
+     ##### 1). layoutManger로 "Grid Layout"으로 만들기 
+
+     ##### 2). spanCount와 itemCount로 개수 정하기
+
+     ##### 3). RepositoryAdapter, Fragment역시 Follower와 코드 유사.
+ 
+   * ## HomeActivity
+      ```kotlin
+              private fun initTransactionEvent(){
+              val followerFragment = FollowerFragment()
+              val repositoryFragment = RepositoryFragment()
+
+              supportFragmentManager.beginTransaction().add(R.id.container_view, followerFragment).commit()
+
+              binding.btnRepo.setOnClickListener {
+                  val transaction = supportFragmentManager.beginTransaction()
+
+                  when (position){
+                      FOLLOWER_POSITION -> {
+                          transaction.replace(R.id.container_view,repositoryFragment)
+                          position = REPOSITORY_POSITION
+                      }
+                  }
+                  transaction.commit()
+              }
+
+              binding.btnFollower.setOnClickListener{
+                  val transaction = supportFragmentManager.beginTransaction()
+
+                  when (position){
+                      REPOSITORY_POSITION -> {
+                          transaction.replace(R.id.container_view, followerFragment)
+                          position = FOLLOWER_POSITION
+                      }
+                  }
+                  transaction.commit()
+              }
+          }
+
+          companion object {
+              const val FOLLOWER_POSITION = 1
+              const val REPOSITORY_POSITION = 2
+          }
+      ```
+ 
+     ##### 1). default로 "FollowerRecyclerView" 담은 Fragment보여주기 --> position값에 따라 transaction.replace() 변경
+   
+     ##### 2). "레포지토리 목록" 버튼(btnRepo) 누르면 "ropositoryFragment"로 전환
+ 
+   * ## 📲 실행화면
+    
+|Home화면|
+|:------:|
+|<img src=https://user-images.githubusercontent.com/62291759/136788922-abb6ffa9-12d4-402d-a546-d11d6a192664.gif width="200" height="450">| 
+ 
+ 
+ #### 📌 2️⃣Week 배운내용 및 성장한 내용
+ ##### * 목록을 나타내기 위해서 전에 개발할 때는 recyclerview활용하지 않았는데 이번 과제를 통해 재생산이 되는 이 뷰 장점을 알게 됨.  
+ ##### * Fragment를 활용하면 한 화면에 다양한 동작을 갖는 뷰를 구현할 수 있다는 점을 알게 됨.
+ ##### * Adapter : viewHolder를 생성하고 ItemLayout을 ViewHolder에 넘겨준다.
+ ##### * onBind() 함수는 ViewHolder가 가진 View에 Adapter로 부터 전달받은 데이터를 붙여준다.
+ ##### * 시험기간이라 역시나,,,LV.1 과제만 해서 아쉽,,, 셤끝나고 LV2,LV3 도전 ❗
+ 
+ #### 📝 To-do
+ ##### 1. Adatper와 Fragment 그리고 layout에 대해 복습할 것
+ ##### 2. level 2, level 3 과제 하기
+ ##### 3. 개념 설명 기록하기
+ 
+ 
+   
