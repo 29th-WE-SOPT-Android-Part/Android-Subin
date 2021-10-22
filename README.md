@@ -7,8 +7,15 @@
 
 
 ## 🔴 세미나 과제
+### 📝목차
+[1️⃣Week](#week1-assignment)
+
+[2️⃣Week](#week2-assignment)
+
+----
 
 ### 1️⃣Week
+#### Week1 assignment
 * SignInActivity , SignUpActivity, HomeActivity
   * ## SignInActivity
    ```kotlin
@@ -89,4 +96,103 @@
    ##### 3. 앞으로 level 2, level 3 과제 하기
    ##### 4. 개념 설명 기록하기
     
-   
+ ----
+### 2️⃣Week
+#### Week2 assignment
+* FollowerFragment , RepositoryFragment, HomeActivity
+  * ## FollowerRecyclerView
+    ```kotlin
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_follower"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="4"
+        tools:listitem="@layout/item_sample_list" />
+    ```
+    
+   * ## FollowerFragment
+     ```kotlin
+              class FollowerFragment : Fragment() {
+             private var _binding : FragmentFollowerBinding? = null
+             private val binding get() = _binding ?: error("Binding이 초기화 되지 않았습니다.")
+             // adapter 초기화
+             private lateinit var followerAdapter : FollowerAdapter
+
+             override fun onCreateView(
+                 inflater: LayoutInflater, container: ViewGroup?,
+                 savedInstanceState: Bundle?
+             ): View? {
+                 _binding = FragmentFollowerBinding.inflate(layoutInflater,container,false)
+                 initAdapter()
+                 return binding.root
+
+             }
+
+             override fun onDestroyView() {
+                 super.onDestroyView()
+                 _binding=null
+             }
+
+             private fun initAdapter() {
+                 //adapter 초기화
+                 followerAdapter = FollowerAdapter()
+                 //adatper와 recyclerview 연동
+                 binding.rvFollower.adapter = followerAdapter
+
+                 followerAdapter.userList.addAll(
+                     listOf(
+                         UserData("김수빈", "안드로이드"),
+                         UserData("문다빈", "안드로이드 파트장"),
+                         
+                        "UserData 데이터 삽입 내용"
+                     )
+                 )
+                 followerAdapter.notifyDataSetChanged()
+             }
+         }
+     ```
+    * ## FollowerAdapter
+      ```kotlin
+     
+            class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>() {
+                val userList = mutableListOf<UserData>()
+
+                override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowerViewHolder {
+                    val binding = ItemSampleListBinding.inflate(
+                        LayoutInflater.from(parent.context),
+                        parent,false
+                    )
+                    return FollowerViewHolder(binding)
+                }
+
+                override fun onBindViewHolder(holder: FollowerViewHolder, position: Int) {
+                   holder.onBind(userList[position])
+                }
+
+                override fun getItemCount(): Int = userList.size
+
+                // Binding 객체를 생성자로 가지는 ViewHolder 클래스 생성
+                class FollowerViewHolder(private val binding: ItemSampleListBinding)
+                    : RecyclerView.ViewHolder(binding.root){
+                        fun onBind(data : UserData){
+                            binding.tvName.text=data.name
+                            binding.tvIntroduce.text=data.introduction
+                        }
+                    }
+            }
+       ```
+     <details>
+       <summary>📌 FollowerRecyclerView 설명</summary>
+        <div markdown="1">
+         
+           1) "팔로워 목록" 버튼 클릭시 팔로워 목록을 linearlayout으로 보여주기
+         
+           2) UserData data class를 만들어 name과 introduction을 만들어줌 
+         
+           3) data를 활용해 followeradapter에서 " val userList = mutableListOf<UserData>() " 리스트를 만들어 데이터 삽입
+         
+           4) adapter : 데이터 가져오기 , fragment : adapter와 recyclerview 연동 및 데이터 삽입
+        
+         </div>
+     </details>
