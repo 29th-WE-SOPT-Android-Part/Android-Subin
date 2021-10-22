@@ -265,7 +265,7 @@
     
 |Home화면|
 |:------:|
-|<img src=https://user-images.githubusercontent.com/62291759/136788922-abb6ffa9-12d4-402d-a546-d11d6a192664.gif width="200" height="450">| 
+|<img src=https://user-images.githubusercontent.com/62291759/138426781-6179a2b6-5c7e-4807-a0f5-c176d679468a.gif width="200" height="450">| 
  
  
  #### 📌 2️⃣Week 배운내용 및 성장한 내용
