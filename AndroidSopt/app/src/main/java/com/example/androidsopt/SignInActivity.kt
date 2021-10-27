@@ -12,7 +12,7 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding=ActivitySignInBinding.inflate(layoutInflater)
 
-        val id=binding.etId.text.toString()
+//        val id: String =binding.etId.text.toString()
 //        val pw=binding.etId2.text.toString()
         val intent= Intent(this, SignUpActivity::class.java)
         //회원가입 버튼 누르면 SignUpActivity로 이동
