@@ -431,6 +431,6 @@
  
   * ## 📲 실행화면
  
-|Home화면|
-|:------:|
-|<img src=https://user-images.githubusercontent.com/62291759/138426781-6179a2b6-5c7e-4807-a0f5-c176d679468a.gif width="200" height="450">| 
+|Home화면|버튼클릭색상|
+|:------:|:----------|
+|<img src=https://user-images.githubusercontent.com/62291759/139587961-b9c98f82-aded-4a5d-9a3b-c421dc4be850.gif width="200" height="450">| 
