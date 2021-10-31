@@ -23,9 +23,10 @@ class ProfileFragment : Fragment() {
     ): View? {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 //
+
         initTransactionEvent()
         initImage()
-        binding.btnFollower.isSelected = true
+
         return binding.root
     }
     private fun initTransactionEvent(){
@@ -33,26 +34,29 @@ class ProfileFragment : Fragment() {
         val repositoryFragment = RepositoryFragment()
 
         childFragmentManager.beginTransaction().add(R.id.container_view, followerFragment).commit()
+        binding.btnFollower.isSelected = true //처음 화면 보여질 시에
 
+        binding.btnFollower.setOnClickListener{
+
+            childFragmentManager.beginTransaction()
+                    .replace(R.id.container_view, followerFragment)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .commit()
+            binding.btnFollower.isSelected=true;
+            binding.btnRepo.isSelected=false;
+        }
         binding.btnRepo.setOnClickListener {
             childFragmentManager.beginTransaction()
                 .replace(R.id.container_view,repositoryFragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit()
             binding.btnRepo.isSelected=true
-            binding.btnFollower.isSelected=true
+            binding.btnFollower.isSelected=false
 
 
         }
 
-        binding.btnFollower.setOnClickListener{
-            childFragmentManager.beginTransaction()
-                .replace(R.id.container_view, followerFragment)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .commit()
-                    binding.btnFollower.isSelected=true;
-                    binding.btnRepo.isSelected=false;
-        }
+
     }
 
 
