@@ -433,7 +433,7 @@
  
 |Home화면|버튼클릭색상|
 |:------:|:----------|
-|<img src=https://user-images.githubusercontent.com/62291759/139587961-b9c98f82-aded-4a5d-9a3b-c421dc4be850.gif width="200" height="450">| 
+|<img src=https://user-images.githubusercontent.com/62291759/139587961-b9c98f82-aded-4a5d-9a3b-c421dc4be850.gif width="200" height="450">|<img src =https://user-images.githubusercontent.com/62291759/139589051-a0ed7d13-8206-4a80-9a70-0bca95f3f528.gif|
  
  
  #### 📌 3️⃣Week 배운내용 및 성장한 내용
