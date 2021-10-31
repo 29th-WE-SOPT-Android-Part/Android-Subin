@@ -461,8 +461,8 @@
                       .replace(R.id.container_view, followerFragment)
                       .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                       .commit()
-              binding.btnFollower.isSelected=true;
-              binding.btnRepo.isSelected=false;
+              binding.btnFollower.isSelected=true
+              binding.btnRepo.isSelected=false
              }
              binding.btnRepo.setOnClickListener {
               childFragmentManager.beginTransaction()
