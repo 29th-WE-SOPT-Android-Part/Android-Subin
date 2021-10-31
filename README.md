@@ -429,17 +429,22 @@
  
            ```
  
-  * ## 📲 실행화면 및 오류?! 궁금한 부분
- |Home화면|
- |:------:|
+ * ## 📲 실행화면 및 오류?! 궁금한 부분
+   #### profile화면에서 repository, follower화면 확인 + home화면에서 팔로잉, 팔로워 확인. 이때 중첩스크롤 해결!
+ 
+ |week3실행화면|
+ |:----------:|
  |<img src=https://user-images.githubusercontent.com/62291759/139587961-b9c98f82-aded-4a5d-9a3b-c421dc4be850.gif width="200" height="450">|<img src=https://user-images.githubusercontent.com/62291759/139589051-a0ed7d13-8206-4a80-9a70-0bca95f3f528.gif width="200" height="450">|
  
-📌 이거..왜 안바뀔까요오???ㅜㅜㅜㅜ 😂😢😂😢
+ * ## 📌 이거..왜 안바뀔까요오???ㅜㅜㅜㅜ 😂😢😂😢
+ #### button selected 여부로 코드 구현했는데 실행하면 에뮬레이터에서 적용이 안됩니다요.... 어디가 틀렸는지 알수가없숩니다...알려주쎄여... 이부분만 2시간동안 째려봐써여👀
+ #### 클릭할 때만 바뀝니다...유지가 안된다고할까..?? 
+ 
 |Button색상 안바뀜|
 |:--------------:|
 |<img src=https://user-images.githubusercontent.com/62291759/139589051-a0ed7d13-8206-4a80-9a70-0bca95f3f528.gif width="200" height="450">|
 
- ### Button is clicked 관련 코드
+ ### Button is selected 관련 코드
       
     ```kotlin
       
