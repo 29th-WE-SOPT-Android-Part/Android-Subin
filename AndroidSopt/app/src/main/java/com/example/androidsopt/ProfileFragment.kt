@@ -6,13 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
 import com.example.androidsopt.databinding.ActivityHomeBinding
 import com.example.androidsopt.databinding.FragmentProfileBinding
 
 
 class ProfileFragment : Fragment() {
-    private var position  = FOLLOWER_POSITION
+
     private var _binding :FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
@@ -24,7 +25,7 @@ class ProfileFragment : Fragment() {
 //
         initTransactionEvent()
         initImage()
-
+        binding.btnFollower.isSelected = true
         return binding.root
     }
     private fun initTransactionEvent(){
@@ -34,34 +35,27 @@ class ProfileFragment : Fragment() {
         childFragmentManager.beginTransaction().add(R.id.container_view, followerFragment).commit()
 
         binding.btnRepo.setOnClickListener {
-            val transaction = childFragmentManager.beginTransaction()
+            childFragmentManager.beginTransaction()
+                .replace(R.id.container_view,repositoryFragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .commit()
+            binding.btnRepo.isSelected=true
+            binding.btnFollower.isSelected=true
 
-            when (position){
-                FOLLOWER_POSITION -> {
-                    transaction.replace(R.id.container_view,repositoryFragment)
-                    position = REPOSITORY_POSITION
-                }
-            }
-            transaction.commit()
+
         }
 
         binding.btnFollower.setOnClickListener{
-            val transaction = childFragmentManager.beginTransaction()
-
-            when (position){
-                REPOSITORY_POSITION -> {
-                    transaction.replace(R.id.container_view, followerFragment)
-                    position = FOLLOWER_POSITION
-                }
-            }
-            transaction.commit()
+            childFragmentManager.beginTransaction()
+                .replace(R.id.container_view, followerFragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .commit()
+                    binding.btnFollower.isSelected=true;
+                    binding.btnRepo.isSelected=false;
         }
     }
 
-    companion object {
-        const val FOLLOWER_POSITION = 1
-        const val REPOSITORY_POSITION = 2
-    }
+
 
     private fun initImage(){
         Glide.with(this)
