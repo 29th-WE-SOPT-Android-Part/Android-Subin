@@ -324,29 +324,33 @@
         </selector>
 
        ```
-      
-       ```kotlin
  
-         private fun initAdapter(){
-               val fragmentList=listOf(HomeFollowerFragment(),HomeFollowingFragment())
-
-               homeFollowViewPagerAdapter=HomeFollowViewPagerAdapter(this)
-               homeFollowViewPagerAdapter.fragments.addAll(fragmentList)
-
-               binding.vpHomefragment.adapter=homeFollowViewPagerAdapter
-
-           }
-
-         private fun initTabLayout(){
-               val tabLabel=listOf("팔로잉","팔로워")
-               // tablayout이랑 viepager2 연결
-               TabLayoutMediator(binding.homeTablayout,binding.vpHomefragment){
-                       tab,position->
-                   tab.text=tabLabel[position]
-               }.attach()
-           }
+   * ####  TabLayout
  
-       ```
+     * ##### HomeFragment의 TabLayout
+ 
+        ```kotlin
+
+          private fun initAdapter(){
+                val fragmentList=listOf(HomeFollowerFragment(),HomeFollowingFragment())
+
+                homeFollowViewPagerAdapter=HomeFollowViewPagerAdapter(this)
+                homeFollowViewPagerAdapter.fragments.addAll(fragmentList)
+
+                binding.vpHomefragment.adapter=homeFollowViewPagerAdapter
+
+            }
+
+          private fun initTabLayout(){
+                val tabLabel=listOf("팔로잉","팔로워")
+                // tablayout이랑 viepager2 연결
+                TabLayoutMediator(binding.homeTablayout,binding.vpHomefragment){
+                        tab,position->
+                    tab.text=tabLabel[position]
+                }.attach()
+            }
+
+        ```
  
      ### ✔Level 2
  
@@ -377,7 +381,7 @@
           
             ##### (1).먼저 UserData에 "val Img : String" 변수 추가해주기
           
-            ##### (2).FollowerAdatper
+            ##### (2).FollowerAdatper : Glide.circleCrop()으로 사진 둥글게 나타내기 , into()로 팔로우 프로필과 
    
            ```kotlin
  
@@ -424,3 +428,9 @@
             }
  
            ```
+ 
+  * ## 📲 실행화면
+ 
+|Home화면|
+|:------:|
+|<img src=https://user-images.githubusercontent.com/62291759/138426781-6179a2b6-5c7e-4807-a0f5-c176d679468a.gif width="200" height="450">| 
