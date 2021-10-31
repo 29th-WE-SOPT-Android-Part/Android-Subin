@@ -12,6 +12,8 @@
 
 [2️⃣Week](#week2-assignment)
 
+[3️⃣Week](#week3-assignment)
+
 ----
 
 ### 1️⃣Week
@@ -280,5 +282,145 @@
  ##### 2. level 2, level 3 과제 하기
  ##### 3. 개념 설명 기록하기
  
+----
  
+### 3️⃣Week
+#### Week3 assignment
    
+   ### ✔Level 1
+ 
+   * ####  Button, EditText Design
+ 
+     * ##### button 클릭시 글자 색 바꾸기
+ 
+     ```kotlin
+ 
+      <selector xmlns:android="http://schemas.android.com/apk/res/android">
+           <item android:color="@color/black" android:state_pressed="false" />
+            <item android:color="@color/white" android:state_pressed="true"/>
+
+      </selector>
+ 
+      ```
+ 
+      * ##### button 클릭시 버튼 색 바꾸기
+
+      ```kotlin
+
+        <selector xmlns:android="http://schemas.android.com/apk/res/android">
+             <item android:drawable="@drawable/button_fill_gray" android:state_pressed="false" />
+             <item android:drawable="@drawable/button_fill_color" android:state_pressed="true"/>
+        </selector>
+
+      ```
+ 
+      * ##### EditText 입력할 때 색상 바꾸기
+
+       ```kotlin
+
+        <selector xmlns:android="http://schemas.android.com/apk/res/android">
+             <item android:drawable="@drawable/rectangle_fill_gray" android:state_focused="false"/>
+             <item android:drawable="@drawable/rectangle_border_pink" android:state_focused="true"/>
+        </selector>
+
+       ```
+      
+       ```kotlin
+ 
+         private fun initAdapter(){
+               val fragmentList=listOf(HomeFollowerFragment(),HomeFollowingFragment())
+
+               homeFollowViewPagerAdapter=HomeFollowViewPagerAdapter(this)
+               homeFollowViewPagerAdapter.fragments.addAll(fragmentList)
+
+               binding.vpHomefragment.adapter=homeFollowViewPagerAdapter
+
+           }
+
+         private fun initTabLayout(){
+               val tabLabel=listOf("팔로잉","팔로워")
+               // tablayout이랑 viepager2 연결
+               TabLayoutMediator(binding.homeTablayout,binding.vpHomefragment){
+                       tab,position->
+                   tab.text=tabLabel[position]
+               }.attach()
+           }
+ 
+       ```
+ 
+     ### ✔Level 2
+ 
+     * ####  중첩스크롤 문제 해결 -> NestedScrollableHost
+ 
+       * ##### ProfileFragment.xml에서 viewpager2를 NestedScrollableHost로 감싸기
+
+         ```kotlin
+
+          <com.example.androidsopt.NestedScrollableHost
+             android:layout_width="match_parent"
+             android:layout_height="0dp"
+             app:layout_constraintTop_toBottomOf="@+id/home_tablayout"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintEnd_toEndOf="parent">
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/vp_homefragment"
+                    android:background="#dfdfdf"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+          </com.example.androidsopt.NestedScrollableHost>
+
+         ```
+      * ####  Follower__각각 아이템에 이미지 url 활용하여 다른 이미지 보여주기
+
+         * ##### FollowerAdapter, UserData, FollowerFragment
+          
+            ##### (1).먼저 UserData에 "val Img : String" 변수 추가해주기
+          
+            ##### (2).FollowerAdatper
+   
+           ```kotlin
+ 
+            class FollowerViewHolder(private val binding: ItemSampleListBinding) :
+                  RecyclerView.ViewHolder(binding.root) {
+                  fun onBind(data: UserData) {
+                      binding.tvName.text = data.name
+                      binding.tvIntroduce.text = data.introduction
+                      Glide.with(binding.root)
+                          .load(data.Img)
+                          .circleCrop()
+                          .into(binding.ivProfile)
+                  }
+
+             }
+ 
+           ```
+             ##### (3).FollowerFragment
+ 
+           ```kotlin
+            private fun initAdapter() {
+                //adapter 초기화
+              followerAdapter = FollowerAdapter()
+                //adatper와 recyclerview 연동
+              binding.rvFollower.adapter = followerAdapter
+              val img1 ="http://image.cine21.com/resize/cine21/still/2019/0624/16_07_21__5d1076a9eca7f[W578-].JPG"
+              val img2 ="http://image.cine21.com/resize/cine21/still/2019/0624/16_15_30__5d1078925c7c5[W578-].jpg"
+              val img3 ="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20210118_180%2F161094482719298FEG_JPEG%2FB01MU764R0_9.jpg&type=sc960_832"
+              val img4 ="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160902_16%2Fdynamote_1472795070315jifGn_JPEG%2F1.jpeg&type=sc960_832"
+              val img5 ="img url(길어서 생략)"
+              val img6 ="img url(길어서 생략)"
+
+              followerAdapter.userList.addAll(
+                  listOf(
+                      UserData(img1,"김수빈", "안드로이드"),
+                      UserData(img2,"문다빈", "안드로이드 파트장"),
+                      UserData(img3,"김현아", "기획 파트장"),
+                      UserData(img4,"이성현", "디자인 파트장"),
+                      UserData(img5,"김우영", "서버 파트장"),
+                      UserData(img6,"김의진", "웹 파트장")
+                   )
+                )
+                followerAdapter.notifyDataSetChanged()
+            }
+ 
+           ```
