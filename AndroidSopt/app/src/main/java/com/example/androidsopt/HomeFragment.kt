@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
 
     private fun initTabLayout(){
         val tabLabel=listOf("팔로잉","팔로워")
-
+// tablayout이랑 viepager2 연결
         TabLayoutMediator(binding.homeTablayout,binding.vpHomefragment){
                 tab,position->
             tab.text=tabLabel[position]
