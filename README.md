@@ -434,3 +434,18 @@
 |Home화면|버튼클릭색상|
 |:------:|:----------|
 |<img src=https://user-images.githubusercontent.com/62291759/139587961-b9c98f82-aded-4a5d-9a3b-c421dc4be850.gif width="200" height="450">| 
+ 
+ 
+ #### 📌 3️⃣Week 배운내용 및 성장한 내용
+ ##### * TapLayout의 기능과 ViewPager2의 특징을 알게됨 (특히 ViewPager와 ViewPager2의 차이)
+ ##### * ViewPager2는 리사이클러뷰 기반으로 동작하고 notifyDataChanged()통해 UI 업데이터 가능함. 그리고 수평, 수직 스크롤 모두 지원!
+ ##### * Fragment안에 Fragment 구현시에 코드가 달라진다. (아래코드첨부)
+ ##### * childFragmentManager.beginTransaction().add(R.id.container_view, followerFragment).commit() --> ProfileFragment에서 구현시에 사용.
+ ##### * 디자인 font첨부와 이미지 url 그리고 navigation 하단바 - 구현할 때는 조금...귀찮거 힘든데 막상 만들어 보면 앱다운 앱같다 ㅎㅎ
+ ##### * 이제 DataBinding을 공부해서 더 간결하고 육안으로 보기 편한 코드를 짜봐야겠다!!!!!
+ ##### * 버튼 클릭시 색 변환이... 코드 로직은 틀린 거 없어 보이는데 왜 적용이 안될까.... 이 문제에서만 2시간 붙잡고 있었는데 해결못했따...또르륵😥
+ 
+ #### 📝 To-do
+ ##### 1. ViewPager2, TapLayout 정리하기
+ ##### 2. level 3 과제 하기 +DataBinding으로 코드 refactor하기
+
