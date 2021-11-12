@@ -14,6 +14,8 @@
 
 [3️⃣Week](#week3-assignment)
 
+[4️⃣Week](#week4-assignment)
+
 ----
 
 ### 1️⃣Week
@@ -493,3 +495,13 @@
 ##### 1. ViewPager2, TapLayout 정리하기
 ##### 2. level 3 과제 하기 +DataBinding으로 코드 refactor하기
 
+---
+ 
+ ### 4️⃣Week
+#### Week4 assignment
+ 
+  ### ✔Level 1
+       
+  * ####  POSTMAN 테스트
+
+ 
