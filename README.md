@@ -520,10 +520,130 @@
  
  * ####  회원가입
  
-   * ##### SignUP
+   * ##### SignUp - Retrofit Interface
+  
+     ##### 서버와의 의사소통 방식, 일종의 상호작용 방법을 정의
  
    ```kotlin
  
- 
+     interface SignUpService {
+       @Headers("Content-Type: application/json")
+       @POST("user/signup")
+      fun postSignup(
+            @Body body : RequestSignUpData
+       ) :Call<ResponseSignUpData>
+      }
  
    ```
+
+    * ##### SignUp - request/response 객체 설계
+ 
+    ```kotlin
+ 
+      data class RequestSignUpData(
+        @SerializedName("email")
+        val id : String,
+        val name : String,
+        val password : String
+       )
+
+ 
+     ```
+ 
+     ```kotlin
+
+        data class ResponseSignUpData(
+           val status : Int,
+           val success : Boolean,
+           val message : String,
+           val data : Data
+            ) {
+         data class Data(
+               val id: Int,
+               val name: String,
+               val email: String
+            )
+         }
+ 
+      ```  
+ 
+      * ##### SignUp - Callback 등록하여 통신 요청
+ 
+        ##### Call 객체의 비동기 작업 이후 작업이 끝날때 할 행동을 Callback 객체로 표현
+
+      ```kotlin
+ 
+         private fun initNetwork() {
+             val requestSignupData = RequestSignUpData(
+                     id = binding.etId.text.toString(),
+                     name = binding.etName.text.toString(),
+                     password = binding.etId2.text.toString()
+             )
+
+             val call: Call<ResponseSignUpData> = ServiceCreator.signupService.postSignup(requestSignupData)
+
+             call.enqueue(object : Callback<ResponseSignUpData> {
+                 override fun onResponse(
+                         call: Call<ResponseSignUpData>,
+                         response: Response<ResponseSignUpData>
+                 ) {
+                     if (response.isSuccessful) {
+                         val data = response.body()?.data
+
+                         Toast.makeText(this@SignUpActivity, "${data?.email}님 회원가입이 완료되었습니다!", Toast.LENGTH_SHORT).show()
+                     } else
+                         Toast.makeText(this@SignUpActivity, "회원가입에 실패하셨습니다", Toast.LENGTH_SHORT).show()
+                 }
+
+                 override fun onFailure(call: Call<ResponseSignUpData>, t: Throwable) {
+                     Log.e("NetworkText", "error:$t")
+                   }
+               })
+           }
+ 
+      ```
+  * ####  로그인
+ 
+    * ##### SignIn - Callback 등록하여 통신 요청
+ 
+      ##### 회원가입과 data, interface 유사하므로 skip 
+ 
+      ##### call 객체에 enqueue를 호출하여 실제 서버통신을 비동기적으로 요청, 만약 body()에 값이 없을 경우 or response.isSuccessful이 false인 경우 서버통신 실패
+ 
+    ```kotlin
+      private fun initNetwork() {
+         val requestSignInData = RequestSignInData(
+                 id = binding.etId.text.toString(),
+                 password = binding.etId2.text.toString()
+          )
+
+         val call: Call<ResponseSignInData> = ServiceCreator.signinService.postLogin(requestSignInData)
+
+         call.enqueue(object : Callback<ResponseSignInData> {
+             override fun onResponse(
+                     call: Call<ResponseSignInData>,
+                    response: Response<ResponseSignInData>
+            ) {
+                if (response.isSuccessful) {
+                    val data = response.body()?.data
+
+                    Toast.makeText(this@SignInActivity, "${data?.email}님 반갑습니다!", Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this@SignInActivity, HomeActivity::class.java))
+                } else
+                    Toast.makeText(this@SignInActivity, "로그인에 실패하셨습니다", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onFailure(call: Call<ResponseSignInData>, t: Throwable) {
+                Log.e("NetworkTest", "error:$t")
+            }
+                 })
+          }
+
+ 
+    ```
+ 
+ * ## 📲 실행화면
+ 
+ |week3실행화면|
+ |:----------:|
+ |<img src=https://user-images.githubusercontent.com/62291759/141411535-3f7c7541-5e97-4eb9-ab43-1508931bd988.gif width="200" height="450">|
