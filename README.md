@@ -513,5 +513,17 @@
  
       <img width="504" src="https://user-images.githubusercontent.com/62291759/141410513-35ba820f-0031-4779-aa7e-c814adaf1d69.png">
      
+    * #####  이메일로 유저 찾기 성공
+ 
+      <img width="505" alt="이메일유저조회성공" src="https://user-images.githubusercontent.com/62291759/141410696-3f3e6ca7-399e-4cde-acbe-de0dbcb01d88.png">
+   
+ 
+ * ####  회원가입
+ 
+   * ##### SignUP
+ 
+   ```kotlin
  
  
+ 
+   ```
