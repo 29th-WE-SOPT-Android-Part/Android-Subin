@@ -503,5 +503,15 @@
   ### ✔Level 1
        
   * ####  POSTMAN 테스트
-
+   
+    * ##### 회원가입 성공
+     
+      <img width="561" alt="회원가입" src="https://user-images.githubusercontent.com/62291759/141410672-ba81bd0f-6768-40a7-94ac-d9a838ef7b9e.png">
+      <img width="504" alt="회원가입성공" src="https://user-images.githubusercontent.com/62291759/141410644-660c7d4a-1cea-486b-8556-82d22cde2938.png">
+ 
+    * #####  로그인 성공
+ 
+      <img width="504" src="https://user-images.githubusercontent.com/62291759/141410513-35ba820f-0031-4779-aa7e-c814adaf1d69.png">
+     
+ 
  
