@@ -644,7 +644,17 @@
  
  * ## 📲 실행화면
  
- |week3실행화면|
+ |week4실행화면|
  |:----------:|
  |<img src=https://user-images.githubusercontent.com/62291759/141471708-40781365-b068-4205-a8b6-3438fbca410e.gif width="200" height="450">|
+ 
+#### 📌 4️⃣Week 배운내용 및 성장한 내용
+##### * retrofit interface, resoponse/request 객체 구현
+##### * postman 실습
+##### * Callback 등록하여 통신 요청하는 방법 / 비동기 작업
+
+
+#### 📝 To-do
+##### 1. Okhttp 활용해보기
+##### 2. 비동기처리 라이브러리로 구현해보기
  
