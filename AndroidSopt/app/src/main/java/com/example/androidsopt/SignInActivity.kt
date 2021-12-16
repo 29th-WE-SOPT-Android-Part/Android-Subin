@@ -31,6 +31,9 @@ class SignInActivity : AppCompatActivity() {
 
     }
 
+    //7주차 과제 - initClickEvent() 메소드 구현
+    //7주차 과제 - isAutoLogin() 함수 구현
+
     private fun initNetwork() {
         val requestSignInData = RequestSignInData(
                 id = binding.etId.text.toString(),
