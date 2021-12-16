@@ -22,6 +22,7 @@ class ThirdFragment : Fragment() {
 
         binding.btnThird.setOnClickListener{
             findNavController().navigate(R.id.action_thirdFragment_to_signInActivity)
+            (activity as OnBoarding).finish()
         }
         return binding.root
 

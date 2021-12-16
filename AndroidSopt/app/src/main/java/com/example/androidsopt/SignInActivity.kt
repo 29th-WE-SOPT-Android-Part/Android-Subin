@@ -25,6 +25,9 @@ class SignInActivity : AppCompatActivity() {
             initNetwork()
         }
 
+        initClickEvent()
+        isAutoLogin()
+
         SignUpBtnEvent()
 
         setContentView(binding.root)
@@ -62,8 +65,19 @@ class SignInActivity : AppCompatActivity() {
         })
     }
 
-
-
+private fun initClickEvent(){
+    binding.ibCheck.setOnClickListener{
+        binding.ibCheck.isSelected = !binding.ibCheck.isSelected
+        SharedPreferences.setAutoLogin(this,binding.ibCheck.isSelected)
+    }
+}
+private fun isAutoLogin(){
+    if(SharedPreferences.getAtutoLogin(this)){
+        shortToast("자동로그인 되었습니다.")
+        startActivity(Intent(this, HomeActivity::class.java))
+        finish()
+    }
+}
     private fun SignUpBtnEvent() {
         binding.btnSign.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
