@@ -1,5 +1,6 @@
 package com.example.androidsopt
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -24,6 +25,7 @@ class ProfileFragment : Fragment() {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 //
 
+        initSettings()
         initTransactionEvent()
         initImage()
 
@@ -59,8 +61,13 @@ class ProfileFragment : Fragment() {
 
     }
 
+    private fun initSettings() {
 
-
+        binding.ibSettings.setOnClickListener {
+            val intent = Intent(this@ProfileFragment.context, SettingActivity::class.java)
+            startActivity(intent)
+        }
+    }
     private fun initImage(){
         Glide.with(this)
             .load("https://avatars.githubusercontent.com/u/89780201?s=200&v=4")
