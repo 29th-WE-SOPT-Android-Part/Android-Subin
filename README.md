@@ -763,13 +763,17 @@
         
  
        ```
- 
+  * ####  패키징
+  
+    ##### 직관적으로 쉽게 알아볼 수 있도록 data/network/util/view 로 패키지를 생성
+    ##### 이때 view폴더에 각 구현한 Activity/Fragment 단위로 하위 패키지를 생성
+    ##### 
  
  * ## 📲 실행화면
  
- |week7 온보딩 |  자동로그인 | 자동로그인 해제|
- |:----------:|:----------:|:--------------:|
- |<img src=https://user-images.githubusercontent.com/62291759/141471708-40781365-b068-4205-a8b6-3438fbca410e.gif width="200" height="450">|
+ |week7 온보딩 |  자동로그인 | 자동로그인 알림 |자동로그인 해제|
+ |:----------:|:----------:|:--------------:|:--------------|
+ |<img src=https://user-images.githubusercontent.com/62291759/146507881-bab37642-bc0d-4472-91fa-1d11ec4c5605.gif width="200" height="450">|<img src=https://user-images.githubusercontent.com/62291759/146507920-898ca7eb-3cf2-4224-932c-15b5d2507e5e.gif width="200" height="450">|<img src=https://user-images.githubusercontent.com/62291759/146507960-9ad94417-62ed-45ea-8ada-6a111168fda4.gif width="200" height="450">|<img src=https://user-images.githubusercontent.com/62291759/146507993-5a266f43-33d2-48ce-8574-14845cd57e0d.gif width="200" height="450">
  
 #### 📌 7️⃣Week 배운내용 및 성장한 내용
 ##### * 온보딩 정의 및 NavigationComponent활용
