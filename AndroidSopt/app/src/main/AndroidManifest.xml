@@ -12,11 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidSopt"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SettingActivity"></activity>
-        <activity android:name=".SignInActivity" />
+        <activity android:name=".view.Profile.SettingActivity"></activity>
+        <activity android:name=".view.Login.SignInActivity" />
         <activity android:name=".ExampleActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".OnBoarding">
+        <activity android:name=".view.Home.HomeActivity" />
+        <activity android:name=".view.onBoarding.OnBoarding">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity> <!-- android:hardwareAccelerated="false" <activity android:name=".SignUpActivity"></activity> -->
         <!-- <activity android:name=".SignInActivity"> -->
-        <activity android:name=".SignUpActivity" />
+        <activity android:name=".view.Login.SignUpActivity" />
     </application>
 
 </manifest>
