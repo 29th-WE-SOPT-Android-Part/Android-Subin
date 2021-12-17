@@ -16,6 +16,8 @@
 
 [4️⃣Week](#week4-assignment)
 
+[7️⃣Week](#week7-assignment)
+
 ----
 
 ### 1️⃣Week
@@ -658,3 +660,118 @@
 ##### 1. Okhttp 활용해보기
 ##### 2. 비동기처리 라이브러리로 구현해보기
  
+----
+ 
+ ### 7️⃣Week
+ #### Week7 assignment
+
+  ### ✔Level 1
+       
+   * ####  onBoarding
+ 
+      ##### NavigationComponent 활용하여 온보딩 화면 만들기
+  
+      * fragment1,2,3으로 SOPT Hub 로그인 화면 전까지 온보딩 구현
+      * 각 fragment 전환은 버튼을 눌러 이동
+   
+       ```kotlin
+
+        <navigation xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:app="http://schemas.android.com/apk/res-auto"
+          xmlns:tools="http://schemas.android.com/tools"
+          android:id="@+id/nav_sample"
+          app:startDestination="@id/firstFragment">
+
+        <fragment
+            android:id="@+id/firstFragment"
+            android:name="com.example.androidsopt.view.onBoarding.FirstFragment"
+            android:label="fragment_first"
+            tools:layout="@layout/fragment_first" >
+            <action
+                android:id="@+id/action_firstFragment_to_secondFragment"
+                app:destination="@id/secondFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/thirdFragment"
+            android:name="com.example.androidsopt.view.onBoarding.ThirdFragment"
+            android:label="fragment_third"
+            tools:layout="@layout/fragment_third" >
+            <action
+                android:id="@+id/action_thirdFragment_to_signInActivity"
+                app:destination="@id/signInActivity" />
+        </fragment>
+        <fragment
+            android:id="@+id/secondFragment"
+            android:name="com.example.androidsopt.view.onBoarding.SecondFragment"
+            android:label="fragment_second"
+            tools:layout="@layout/fragment_second" >
+            <action
+                android:id="@+id/action_secondFragment_to_thirdFragment"
+                app:destination="@id/thirdFragment" />
+
+        </fragment>
+        <activity
+            android:id="@+id/signInActivity"
+            android:name="com.example.androidsopt.view.Login.SignInActivity"
+            android:label="activity_sign_in"
+            tools:layout="@layout/activity_sign_in" />
+        </navigation>
+
+       ```
+
+   * ####  자동로그인 / 자동로그인 해제 구현하기
+ 
+      ##### SharedPreferences 활용하여 자동로그인 
+ 
+       ```kotlin
+        object SharedPreferences {
+
+           private const val STORAGE_KEY = "USER_AUTH"
+           private const val AUTO_LOGIN = "AUTO_LOGIN"
+
+           fun getAutoLogin(context: Context): Boolean {
+               val preferences = context.getSharedPreferences("USER_AUTH",Context.MODE_PRIVATE)
+               return preferences.getBoolean(AUTO_LOGIN, false)
+
+           }
+           fun setAutoLogin(context: Context, value :Boolean) {
+               val preferences = context.getSharedPreferences("USER_AUTH",Context.MODE_PRIVATE)
+               preferences.edit()
+                   .putBoolean(AUTO_LOGIN, value)
+                   .apply()
+
+         }
+       
+ 
+       ```
+ 
+      ##### SettingActivity - 자동로그인 해제(tvCancel) 클릭 시 remove, clear() 자동로그인 해제
+ 
+       ```kotlin
+     
+        private fun initClickEvent() {
+        binding.tvCancel.setOnClickListener {
+
+            val sp : SharedPreferences = getSharedPreferences("USER_AUTH", MODE_PRIVATE)
+            val editor : SharedPreferences.Editor = sp.edit()
+            editor.remove("USER_AUTH")
+            editor.clear()
+            editor.commit()
+
+             }
+        }
+        
+ 
+       ```
+ 
+ 
+ * ## 📲 실행화면
+ 
+ |week7 온보딩 |  자동로그인 | 자동로그인 해제|
+ |:----------:|:----------:|:--------------:|
+ |<img src=https://user-images.githubusercontent.com/62291759/141471708-40781365-b068-4205-a8b6-3438fbca410e.gif width="200" height="450">|
+ 
+#### 📌 7️⃣Week 배운내용 및 성장한 내용
+##### * 온보딩 정의 및 NavigationComponent활용
+##### * 자동로그인 로직 , SharedPreferences
+##### * 패키징의 중요성 --> 한눈에 잘보여 파일 찾을 때 매우매우 편리함!~!~!
