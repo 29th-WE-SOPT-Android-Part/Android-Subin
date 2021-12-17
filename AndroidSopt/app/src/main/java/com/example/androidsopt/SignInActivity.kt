@@ -72,7 +72,7 @@ private fun initClickEvent(){
     }
 }
 private fun isAutoLogin(){
-    if(SharedPreferences.getAtutoLogin(this)){
+    if(SharedPreferences.getAutoLogin(this)){
         shortToast("자동로그인 되었습니다.")
         startActivity(Intent(this, HomeActivity::class.java))
         finish()
