@@ -767,7 +767,18 @@
   
     ##### 직관적으로 쉽게 알아볼 수 있도록 data/network/util/view 로 패키지를 생성
     ##### 이때 view폴더에 각 구현한 Activity/Fragment 단위로 하위 패키지를 생성
-    ##### 
+ 
+ 
+         ┣ 📂util
+         ┣ 📂network : 서버통신관련
+         ┣ 📂data
+         ┣ 📂view
+            ┣ 📂Home
+            ┣ 📂Profile
+            ┣ 📂Login
+            ┣ 📂Camera
+            ┗ 📂onBoarding
+ 
  
  * ## 📲 실행화면
  
