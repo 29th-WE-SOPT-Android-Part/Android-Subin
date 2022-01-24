@@ -11,7 +11,7 @@ import com.example.androidsopt.databinding.FragmentFirstBinding
 
 
 class FirstFragment : Fragment() {
-    private  var _binding :FragmentFirstBinding ?=null
+    private var _binding :FragmentFirstBinding? = null
     private val binding get()= _binding ?: error("Binding이 초기화 되지 않았습니다.")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

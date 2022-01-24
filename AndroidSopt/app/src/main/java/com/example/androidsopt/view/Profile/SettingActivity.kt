@@ -1,11 +1,12 @@
 package com.example.androidsopt.view.Profile
-
-
-import android.content.SharedPreferences
-import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.androidsopt.databinding.ActivitySettingBinding
+import com.example.androidsopt.view.Login.SharedPreferences
+import com.example.androidsopt.view.Login.SignInActivity
+import android.content.Context
+
 
 
 class SettingActivity : AppCompatActivity() {
@@ -15,21 +16,16 @@ class SettingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingBinding.inflate(layoutInflater)
 
-
         initClickEvent()
-
         setContentView(binding.root)
     }
 
     private fun initClickEvent() {
         binding.tvCancel.setOnClickListener {
-
-            val sp : SharedPreferences = getSharedPreferences("USER_AUTH", MODE_PRIVATE)
-            val editor : SharedPreferences.Editor = sp.edit()
-            editor.remove("USER_AUTH")
-            editor.clear()
-            editor.commit()
-
+            SharedPreferences.removeAutoLogin(this)
+            val intent = Intent(this, SignInActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

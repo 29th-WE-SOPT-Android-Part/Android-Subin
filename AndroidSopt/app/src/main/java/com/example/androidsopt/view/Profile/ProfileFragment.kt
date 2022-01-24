@@ -53,17 +53,14 @@ class ProfileFragment : Fragment() {
                 .commit()
             binding.btnRepo.isSelected = true
             binding.btnFollower.isSelected = false
-
-
         }
-
 
     }
 
     private fun initSettings() {
 
         binding.ibSettings.setOnClickListener {
-            val intent = Intent(this@ProfileFragment.context, SettingActivity::class.java)
+            val intent = Intent(requireContext(), SettingActivity::class.java)
             startActivity(intent)
         }
     }

@@ -1,36 +1,35 @@
 package com.example.androidsopt.view.Login
 
 import android.content.Context
+import android.content.SharedPreferences
 
 object SharedPreferences {
 
     private const val STORAGE_KEY = "USER_AUTH"
     private const val AUTO_LOGIN = "AUTO_LOGIN"
 
-    fun getAutoLogin(context: Context): Boolean {
-        val preferences = context.getSharedPreferences("USER_AUTH",Context.MODE_PRIVATE)
-        return preferences.getBoolean(AUTO_LOGIN, false)
 
+    fun getSharedPreference(context: Context): SharedPreferences {
+        return context.getSharedPreferences(STORAGE_KEY, Context.MODE_PRIVATE)
     }
-    fun setAutoLogin(context: Context, value :Boolean) {
-        val preferences = context.getSharedPreferences("USER_AUTH",Context.MODE_PRIVATE)
-        preferences.edit()
+
+
+    fun getAutoLogin(context: Context): Boolean {
+        return getSharedPreference(context).getBoolean(AUTO_LOGIN, false)
+    }
+
+    fun setAutoLogin(context: Context, value: Boolean) {
+        getSharedPreference(context).edit()
             .putBoolean(AUTO_LOGIN, value)
             .apply()
 
     }
-    fun removeAtutoLogin(context: Context) {
-        val preferences = context.getSharedPreferences(STORAGE_KEY,Context.MODE_PRIVATE)
-        preferences.edit()
-            .remove(AUTO_LOGIN)
-            .apply()
 
-    }
-    fun clearStorage(context: Context) {
-        val preferences = context.getSharedPreferences(STORAGE_KEY,Context.MODE_PRIVATE)
-        preferences.edit()
+    fun removeAutoLogin(context: Context) {
+        getSharedPreference(context).edit()
+            .remove(AUTO_LOGIN)
             .clear()
             .apply()
-
     }
 }
+

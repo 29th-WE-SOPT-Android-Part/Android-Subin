@@ -27,14 +27,10 @@ class SignInActivity : AppCompatActivity() {
         binding.btnLogin.setOnClickListener {
             initNetwork()
         }
-
         initClickEvent()
-        isAutoLogin()
-
+        setAutoLogin()
         SignUpBtnEvent()
-
         setContentView(binding.root)
-
     }
 
     //7주차 과제 - initClickEvent() 메소드 구현
@@ -42,11 +38,12 @@ class SignInActivity : AppCompatActivity() {
 
     private fun initNetwork() {
         val requestSignInData = RequestSignInData(
-                id = binding.etId.text.toString(),
-                password = binding.etId2.text.toString()
+            id = binding.etId.text.toString(),
+            password = binding.etId2.text.toString()
         )
 
-        val call: Call<ResponseSignInData> = ServiceCreator.signinService.postLogin(requestSignInData)
+        val call: Call<ResponseSignInData> =
+            ServiceCreator.signinService.postLogin(requestSignInData)
 
         call.enqueue(object : Callback<ResponseSignInData> {
             override fun onResponse(
@@ -56,7 +53,8 @@ class SignInActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val data = response.body()?.data
 
-                    Toast.makeText(this@SignInActivity, "${data?.email}님 반갑습니다!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@SignInActivity, "${data?.email}님 반갑습니다!", Toast.LENGTH_LONG)
+                        .show()
                     startActivity(Intent(this@SignInActivity, HomeActivity::class.java))
                 } else
                     Toast.makeText(this@SignInActivity, "로그인에 실패하셨습니다", Toast.LENGTH_LONG).show()
@@ -68,19 +66,21 @@ class SignInActivity : AppCompatActivity() {
         })
     }
 
-private fun initClickEvent(){
-    binding.ibCheck.setOnClickListener{
-        binding.ibCheck.isSelected = !binding.ibCheck.isSelected
-        SharedPreferences.setAutoLogin(this, binding.ibCheck.isSelected)
+    private fun initClickEvent() {
+        binding.ibCheck.setOnClickListener {
+            binding.ibCheck.isSelected = !binding.ibCheck.isSelected
+            SharedPreferences.setAutoLogin(this, binding.ibCheck.isSelected)
+        }
     }
-}
-private fun isAutoLogin(){
-    if(SharedPreferences.getAutoLogin(this)){
-        shortToast("자동로그인 되었습니다.")
-        startActivity(Intent(this, HomeActivity::class.java))
-        finish()
+
+    private fun setAutoLogin() {
+        if (SharedPreferences.getAutoLogin(this)) {
+            shortToast("자동로그인 되었습니다.")
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+        }
     }
-}
+
     private fun SignUpBtnEvent() {
         binding.btnSign.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
